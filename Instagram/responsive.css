@@ -1,0 +1,119 @@
+/* Responsividade para desktop */
+@media (min-width: 935px) {
+    .timeline {
+        display: flex;
+        width: 935px;
+        margin: 0 auto;
+    }
+
+    .conteudo-principal, .posts, .post {
+        width: 100%;
+    }
+
+    .lateral {
+        display: flex;
+        gap: 20px;
+        width: 293px;
+        padding: 20px;
+    }
+
+    .recomendados img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
+    .barra-inferior {
+        display: none;
+    }
+}
+
+/* Responsividade para 935px */
+@media (max-width: 935px) {
+    .header {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+    }
+
+    .timeline {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .conteudo-principal, .posts, .post {
+        width: 100%; 
+        margin: 0 auto;
+    }
+
+    .lateral {
+        display: none;
+    }
+
+    .barra-inferior {
+        display: none;
+    }
+}
+
+/* Responsividade para 614px */
+@media (max-width: 614px) {
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .alinhamento {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .storys {
+        align-items: center;
+        position: relative;
+        width: 100%;
+        margin: 54px 0 0 0;
+        padding: 10px 0;
+        overflow-x: auto;
+        gap: 10px;
+        border-radius: 0px;
+        background-color: #ffffff00;
+        box-sizing: border-box;
+    }
+
+    .timeline {
+        width: 614px;
+        margin: 0 auto;
+    }
+
+    .conteudo-principal, .posts, .post {
+        width: 614px;
+        margin: 0 auto;
+    }
+
+    .lateral, .icons {
+        display: none;
+    }
+
+    /* Barra inferior */
+    .barra-inferior {
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        background-color: #FFFFFF;
+        border-top: 1px solid #DBDBDB;
+    }
+
+    .barra-inferior ion-icon {
+        font-size: 22px;
+        color: #232222;
+    }
+}
+
