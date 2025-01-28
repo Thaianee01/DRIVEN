@@ -1,0 +1,167 @@
+/* Google Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@media (max-width: 420px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .topo {
+        background-color: #CF2B2B;
+        height: 92px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        justify-content: center;
+        z-index: 1;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .container-principal {
+        background-color: #a2fed3ec;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        margin-top: 92px;
+        margin-bottom: 92px;
+        z-index: 0;
+        padding: 10px;
+    }
+
+    .prato, .bebida, .sobremesa {
+        background-color: rgb(209, 189, 227);
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+
+    .proteina-1, .proteina-2 , .proteina-3,
+    .coquinha, .fanta, .suco,
+    .pudim, .mouse, .brownie {
+        background-color: #FFFFFF;
+        padding: 10px;
+        width: 172px;
+        height: 216px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 9px;
+    }
+
+    .proteina-1 > img, .proteina-2 > img, .proteina-3 > img,
+    .coquinha > img, .fanta > img, .suco > img,
+    .pudim > img, .mouse > img, .brownie > img {
+        width: 144px;
+        height: 87px;
+        border-radius: 4px;
+    }
+
+    .bebida {
+        background-color: rgb(209, 189, 227);
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .sobremesa {
+        background-color: rgb(209, 189, 227);
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    footer {
+        background-color: #FFFFFF;
+        height: 92px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    footer button {
+        background-color: #CBCBCB;
+        color: white; /* Texto branco */
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 10px; 
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+    }
+    
+    footer button:hover {
+        background-color: #045b0e;
+    }
+    
+
+    /*fontes*/
+    h1 {
+        font-family: "Righteous", sans-serif;
+        font-weight: 400;
+        line-height: 54.63px;
+        font-size: 44px;
+        color: #FFFFFF;
+        margin-left: 20px;
+    }
+
+    h2 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        line-height: 21px;
+        font-size: 18px;
+        color: #FFFFFF;
+        margin-left: 20px;
+    }
+
+    h3 {
+        font-family: "Righteous", sans-serif;
+        font-weight: 400;
+        line-height: 32px;
+        font-size: 26px;
+        color: #333333;
+        margin: 15px 0;
+    }
+
+    h4 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        line-height: 18px;
+        font-size: 16px;
+        color:#333333;
+    }
+
+    h5 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        line-height: 18px;
+        font-size: 16px;
+        color:#333333;
+    }
+
+    p {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        line-height: 17px;
+        font-size: 15px;
+        color: #A6A6A6;
+    }
+}
