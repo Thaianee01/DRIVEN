@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-@media (max-width: 420px) {
+@media (max-width: 440px) {
 
     * {
         box-sizing: border-box;
@@ -53,9 +53,18 @@
         flex-direction: column;
         justify-content: center;
         gap: 10px;
+        border: 3px solid #bd0c0c;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         border-radius: 9px;
     }
+
+    .selecionado {
+        border: 5px solid green;
+        border-radius: 10px;
+        padding: 5px;
+        transition: border-color 0.3s;
+    }
+
 
     .proteina-1 > img, .proteina-2 > img, .proteina-3 > img,
     .coquinha > img, .fanta > img, .suco > img,
@@ -84,7 +93,7 @@
     }
 
     footer {
-        background-color: #FFFFFF;
+        background-color: #0e369c;
         height: 92px;
         width: 100%;
         position: fixed;
@@ -106,10 +115,6 @@
         padding: 10px; 
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         border-radius: 50px;
-    }
-    
-    footer button:hover {
-        background-color: #045b0e;
     }
     
 
