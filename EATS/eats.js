@@ -61,7 +61,8 @@ function FinalizarPedido() {
         footerBtn.innerText = "Fechar pedido";
         footerBtn.style.backgroundColor = "green";
         footerBtn.style.width = "80%";
-    } 
+    }
+    
     
     else {
         footerBtn.disabled = true;
@@ -69,7 +70,15 @@ function FinalizarPedido() {
     }
 }
 
-const confirmarPedido = document.getElementById("confirmarPedido");
-const infoPedidos = document.getElementById("infoPedidos");
-const totalCompra = document.getElementById("totalCompra");
 const overlay = document.querySelector(".overlay");
+const confirmar = document.getElementById("confirmar");
+const infoPedidos = document.getElementById("infoPedidos");
+const total = document.getElementById("total");
+
+
+footerBtn.addEventListener("click", function () {
+    console.log("Botão foi clicado!");
+    overlay.classList.remove(".overlay")
+    overlay.classList.add("overlay-visivel"); // Faz o overlay aparecer
+    
+});
