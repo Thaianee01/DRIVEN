@@ -27,13 +27,13 @@
                         <h5>14,00</h5>
                     </div>
                     <div class = "proteina-2" onclick="selecionarItem(this)">
-                        <img src="calabresa.png" alt = "calabresa">
+                        <img src="./Imagens/calabresa.png" alt = "calabresa">
                         <h4>Calabresa Fininha</h4>
                         <p>Acompanha batatas rústicas, arroz e feijão</p>
                         <h5>16,00</h5>
                     </div>
                     <div class = "proteina-3" onclick="selecionarItem(this)">
-                        <img src="carne.jpg" alt = "carne">
+                        <img src="./Imagens/carne.jpg" alt = "carne">
                         <h4>Picanha e Batatinhas</h4>
                         <p>Acompanha batatas, salada e ovo</p>
                         <h5>32,00</h5>
@@ -44,19 +44,19 @@
                     <h3> Agora, sua bebida </h3>
                     <div class = "bebida">
                         <div class = "coquinha" onclick="selecionarItem(this)">
-                            <img src="coca.png" alt = "coca-cola">
+                            <img src="./Imagens/coca.png" alt = "coca-cola">
                             <h4>Coquinha Gelada</h4>
                             <p>Lata 350ml</p>
                             <h5>7,00</h5>
                         </div>
                         <div class = "fanta" onclick="selecionarItem(this)">
-                            <img src="fanta.png" alt = "fanta laranja">
+                            <img src="./Imagens/fanta.png" alt = "fanta laranja">
                             <h4>Fanta Laranja</h4>
                             <p>Lata 350ml</p>
                             <h5>5,00</h5>
                         </div>
                         <div class = "suco" onclick="selecionarItem(this)">
-                            <img src="suco.png" alt = "suco de laranja">
+                            <img src="./Imagens/suco.png" alt = "suco de laranja">
                             <h4>Suco de Laranja</h4>
                             <p>Copo</p>
                             <h5>10,00</h5>
@@ -68,19 +68,19 @@
                     <h3> Por fim, sua sobremesa </h3>
                     <div class = "sobremesa">
                         <div class = "pudim" onclick="selecionarItem(this)">
-                            <img src="pudim.jpg" alt = "pudim">
+                            <img src="./Imagens/pudim.jpg" alt = "pudim">
                             <h4>Pudim</h4>
                             <p>Pudim caramelisado</p>
                             <h5>8,00</h5>
                         </div>
                         <div class = "mouse" onclick="selecionarItem(this)">
-                            <img src="mouse.jpg" alt = "mouse de maracujá">
+                            <img src="./Imagens/mouse.jpg" alt = "mouse de maracujá">
                             <h4>Mouse</h4>
                             <p>Mouse de Maracujá</p>
                             <h5>9,00</h5>
                         </div>
                         <div class = "brownie" onclick="selecionarItem(this)">
-                            <img src="brownie.jpg" alt = "brownie de chocolate">
+                            <img src="./Imagens/brownie.jpg" alt = "brownie de chocolate">
                             <h4>Brownie</h4>
                             <p>Brownie de Chocolate</p>
                             <h5>5,00</h5>
@@ -91,24 +91,19 @@
         </div>
 
         <footer>
-            <button onclick="alert('selecionado')"> Selecione os 3 itens para fechar o pedido </button>
+            <button id="footerBtn" > Selecione os 3 itens para fechar o pedido </button>
         </footer>
     
-        <div class="escondido">
+        <div class="overlay">
             <div class="conta">
                 <h4>Confirme seu pedido</h4>
-                primeira-escolha: preço
-                segunda-escolha:preço
-                terceira-escolha:preço
-
-                Total
-                <h4><a href="https://www.whatsapp.com/?lang=pt_BR" target="_blank">Fazer Pedido</a></h4>
-
+                <p id="infoPedidos"></p>
+                <p id="totalCompra">Total: R$ 0,00</p>
+                <a href="https://www.whatsapp.com/?lang=pt_BR" id="confirmarPedido"></a>
+                <button id="cancelBtn">Cancelar</button>
             </div>
         </div>
 
         <script src="eats.js"></script>
     </body>
-
-
 </html>
