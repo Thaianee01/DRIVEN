@@ -21,20 +21,20 @@
     }
 
     .container-principal {
-        background-color: #a2fed3ec;
+        background-color: #EEEEEE;
         display: flex;
         flex-direction: column;
         width: 100%;
         max-width: 440px;
         margin: 0 auto;
         margin-top: 92px;
-        margin-bottom: 92px;
+        margin-bottom: 110px;
         z-index: 0;
         padding: 10px;
     }
 
     .prato, .bebida, .sobremesa {
-        background-color: rgb(255, 255, 255);
+        background-color: #EEEEEE;
         display: flex;
         justify-content: space-between;
         gap: 10px;
@@ -45,31 +45,31 @@
 
     .proteina-1, .proteina-2 , .proteina-3,
     .coquinha, .fanta, .suco,
-    .pudim, .mouse, .brownie {
+    .pudim, .mousse, .brownie {
         background-color: #FFFFFF;
         padding: 10px;
         width: 172px;
         height: 216px;
         display: flex;
         flex-direction: column;
+        box-sizing: content-box;
         justify-content: center;
         gap: 10px;
-        border: 3px solid #bd0c0c;
+        border: 3px solid #FFFFFF;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        border-radius: 9px;
+        border-radius: 10px;
     }
 
     .selecionado {
-        border: 5px solid green;
+        border: 5px solid #20861e;
         border-radius: 10px;
-        padding: 5px;
-        transition: border-color 0.3s;
+        padding: 10px;
     }
 
 
     .proteina-1 > img, .proteina-2 > img, .proteina-3 > img,
     .coquinha > img, .fanta > img, .suco > img,
-    .pudim > img, .mouse > img, .brownie > img {
+    .pudim > img, .mousse > img, .brownie > img {
         width: 144px;
         height: 87px;
         border-radius: 4px;
@@ -77,51 +77,91 @@
 
 
     footer {
-        background-color: #0e369c;
+        background-color: #FFFFFF;
         height: 92px;
         width: 100%;
+        display: flex;
         position: fixed;
         bottom: 0;
         margin: 0 auto;
         padding: 20px;
-        display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1;
     }
 
-    footer button {
+    .footerBtn {
         background-color: #CBCBCB;
-        color: white; /* Texto branco */
         font-family: "Roboto", sans-serif;
         font-size: 18px;
         font-weight: 400;
         padding: 10px; 
+        border: none;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         border-radius: 50px;
+        align-items: center;
+        justify-content: center;
     }
 
     .overlay {
         background-color: #FFFFFF;
-        display: none;
-        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
         height: 100%;
-        z-index: 1000;
+        display: none;
+        z-index: 2;
+        justify-content: center;
     }
     
     .overlay-visivel {
-        display: flex;
+        display:flex;
+        position: fixed;
+        background-color: #eeeeeee1;
+        padding: 20px;
+        margin: auto 0;
+        width: 100%;
+        height: 100%;
     }
 
-    .conta {
+    .janela-confirmacao {
         background-color: rgb(12, 219, 9);
         padding: 20px;
+        box-sizing: content-box;
+        gap:10px;
         border-radius: 10px;
+        margin: auto 0;
         text-align: center;
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
         width: 80%;
-        max-width: 500px;
+        height: auto;
     }
+
+    .confirmarBtn {
+        padding: 10px 20px;
+        background-color: #28a745; 
+        color: white; 
+        text-align: center; 
+        text-decoration: none;
+        border-radius: 5px; 
+        font-weight: bold; /* Deixa o texto em negrito */
+    }
+
+    .cancelarBtn {
+        padding: 10px 20px;
+        background-color: #ffffff; 
+        color: rgb(0, 223, 33);
+        border: none; 
+        text-align: center; 
+        text-decoration: none;
+        border-radius: 5px; 
+        font-weight: bold; /* Deixa o texto em negrito */
+    }
+    
 
     /*fontes*/
     h1 {
@@ -165,6 +205,13 @@
         line-height: 18px;
         font-size: 16px;
         color:#333333;
+    }
+
+    h6 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color:#ffffff;
     }
 
     p {

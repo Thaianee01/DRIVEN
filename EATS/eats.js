@@ -1,3 +1,8 @@
+const footerBtn = document.querySelector(".footerBtn");
+const overlay = document.querySelector(".overlay");
+const janelaConfirmacao = document.querySelector(".janela-confirmacao");
+const total = document.getElementById("total");
+
 let categoria = {
     prato: null,
     bebida: null,
@@ -15,7 +20,7 @@ function selecionarItem(element) {
                   element.classList.contains("suco"),
                   
         isSobremesa: element.classList.contains("pudim") || 
-                     element.classList.contains("mouse") || 
+                     element.classList.contains("mousse") || 
                      element.classList.contains("brownie")
     }
 
@@ -38,7 +43,7 @@ function selecionarItem(element) {
     }
 
     if (item.isSobremesa) {
-        const sobremesaSelecionada = document.querySelector(".pudim.selecionado, .mouse.selecionado, .brownie.selecionado");
+        const sobremesaSelecionada = document.querySelector(".pudim.selecionado, .mousse.selecionado, .brownie.selecionado");
         if (sobremesaSelecionada) {
             sobremesaSelecionada.classList.remove("selecionado");
         }
@@ -49,20 +54,19 @@ function selecionarItem(element) {
     // Estilo do CSS adicionado na opção selecionada
     element.classList.add("selecionado");
 
-    // Atualiza o status do pedido
+    // Atualizar o status do pedido
     FinalizarPedido();
 }
 
 function FinalizarPedido() {
-    // Se todos os itens foram selecionados, habilita o botão de finalizar
     if (categoria.prato !== null && categoria.bebida !== null && categoria.sobremesa !== null) {
         console.log("Todos os itens foram selecionados");
         footerBtn.disabled = false;
         footerBtn.innerText = "Fechar pedido";
-        footerBtn.style.backgroundColor = "green";
         footerBtn.style.width = "80%";
+        footerBtn.style.backgroundColor = "#32B72F";
+        footerBtn.style.border = none;
     }
-    
     
     else {
         footerBtn.disabled = true;
@@ -70,15 +74,53 @@ function FinalizarPedido() {
     }
 }
 
-const overlay = document.querySelector(".overlay");
-const confirmar = document.getElementById("confirmar");
-const infoPedidos = document.getElementById("infoPedidos");
-const total = document.getElementById("total");
-
-
-footerBtn.addEventListener("click", function () {
+footerBtn.onclick = function() {
     console.log("Botão foi clicado!");
-    overlay.classList.remove(".overlay")
-    overlay.classList.add("overlay-visivel"); // Faz o overlay aparecer
+    fecharPedido();
+};
+
+function fecharPedido() {
+    overlay.classList.add("overlay-visivel");
+
+    const pratoNome = categoria.prato.querySelector("h4").innerText;
+    const pratoPreco = parseFloat(categoria.prato.querySelector("h5").innerText.replace("R$", "").replace(",", "."));
+
+    const bebidaNome = categoria.bebida.querySelector("h4").innerText;
+    const bebidaPreco = parseFloat(categoria.bebida.querySelector("h5").innerText.replace("R$", "").replace(",", "."));
+
+    const sobremesaNome = categoria.sobremesa.querySelector("h4").innerText;
+    const sobremesaPreco = parseFloat(categoria.sobremesa.querySelector("h5").innerText.replace("R$", "").replace(",", "."));
+
+    const precoTotal = pratoPreco + bebidaPreco + sobremesaPreco;
+
+    const messagem = `Olá, gostaria de fazer o pedido:\n
+    -Prato: ${pratoNome}\n
+    -Bebida: ${bebidaNome}\n
+    -Sobremesa: ${sobremesaNome}\n
+    Total: R$ ${precoTotal.toFixed(2)}`;
+
+    const codificar = encodeURIComponent(messagem);
+    const WhatsApp = `https://wa.me/?text=${codificar}`;
     
-});
+    janelaConfirmacao.innerHTML = `
+        <h6><strong>Confirme o seu pedido</strong></h6>
+        <h2> ${pratoNome}: ${pratoPreco.toFixed(2)}</h2>
+        <h2>${bebidaNome}: ${bebidaPreco.toFixed(2)}</h2>
+        <h2>${sobremesaNome}: ${sobremesaPreco.toFixed(2)}</h2>
+
+        <h6 id="total"><strong>Total:</strong> R$ ${precoTotal.toFixed(2)}</h6> 
+        <a id="confirmarBtn" href="${WhatsApp}" class="confirmarBtn">Tudo certo, pode pedir!</a>
+        <button class="cancelarBtn">Cancelar</button>
+    `;
+
+    const confirmarBtn = document.getElementById("confirmarBtn");
+    confirmarBtn.href = WhatsApp;
+
+    const cancelarBtn = document.querySelector(".cancelarBtn");
+    cancelarBtn.onclick = function() {
+        console.log("Botão cancelar foi clicado!");
+        overlay.classList.remove("overlay-visivel");
+        janelaConfirmacao.innerHTML = "";
+        cancelarBtn.style.border = "none";
+    };
+}
