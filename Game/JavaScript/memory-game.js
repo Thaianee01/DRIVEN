@@ -22,10 +22,10 @@ let moveCount = 0; // Contador de jogadas
 function startGame() {
     let numCards;
 
-    // Loop para validar o número de cartas
-    do {
-        numCards = parseInt(prompt("Quantas cartas você quer jogar?\nEscolha um número par entre 4 e 14"));
-    } while (isNaN(numCards) || numCards % 2 !== 0 || numCards < 4 || numCards > 14);
+     // Loop para validar o número de cartas
+     while (numCards % 2 !== 0 || numCards < 4 || numCards > 14) {
+        numCards = parseInt(prompt("Número inválido. Escolha um número par entre 4 e 14"));
+    }
 
     // Resetar variáveis para um novo jogo
     selectedCards = [];
