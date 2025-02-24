@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bate-papo UOL</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../CSS/chat.css">
+
+</head>
+
+<body>
+    <div class = "inicio" id = "login">
+        <div class="login-screen">
+            <img src="../Imagens/Logo.png" alt="Bate-papo UOL">
+            <h1>Bem-vindo ao Chat UOL</h1>
+            <input class="login-input" id="nome" type="text" placeholder="Digite seu nome" required>
+            <button class="login-button" onclick="login()">Entrar</button>
+        </div>
+    </div>
+
+    <div class="main" id="chat">
+        <div class="header" id="header">
+            <img src="../Imagens/Logo.png" alt="Bate-papo UOL">
+            <ion-icon name="people-sharp" onclick="toggleSidebar()"></ion-icon>
+        </div>
+    
+        <div class="chat-box" id="chat-box">
+            <div class="messages-container"></div>
+        </div>
+    
+        <aside class="sidebar hidden" id="sidebar">
+            <h1>Escolha um contato para enviar mensagem:</h1>
+            <button onclick="toggleSidebar()">Fechar</button>
+        </aside>
+    
+        <footer>
+            <input type="text" id="message-input" placeholder="Escreva aqui..."/>
+            <button id="send-btn">Enviar</button>
+        </footer>
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../JS/bate-papo.js"></script>
+    <script src="../JS/layout.js"></script>
+</body>
+</html>

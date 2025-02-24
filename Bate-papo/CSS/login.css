@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, html {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+  }
+
+
+.inicio {
+    display:flex;
+    background-color: #f7ccffe1;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-screen {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-screen > img {
+    width: 20%; 
+    border-radius: 4px;
+    object-fit: cover; 
+}
+
+.login-screen > img {
+    width: 20%; 
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    object-fit: cover; 
+}
+
+.login-input {
+    padding: 10px 20px; 
+    margin-bottom: 10px;
+    width: 50%; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    color: #000000; 
+    background-color: #f9f9f9; 
+}
+
+
+.login-button {
+    padding: 10px 20px; 
+    width: 50%; 
+    background-color: #72b6ff; 
+    border: none; 
+    border-radius: 20px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+
+/*Fontes*/
+
+H1 {
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: bold;
+    font-weight: 700;
+}
