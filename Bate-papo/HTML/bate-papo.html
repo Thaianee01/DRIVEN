@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="../CSS/reset.css">
     <link rel="stylesheet" href="../CSS/login.css">
     <link rel="stylesheet" href="../CSS/chat.css">
-
 </head>
 
 <body>
-    <div class = "inicio" id = "login">
+    <div class="inicio" id="login">
         <div class="login-screen">
             <img src="../Imagens/Logo.png" alt="Bate-papo UOL">
             <h1>Bem-vindo ao Chat UOL</h1>
@@ -20,32 +19,44 @@
         </div>
     </div>
 
-    <div class="main" id="chat">
+    <div class="main" id="chat" style="display: none;">
+        <!-- Overlay para escurecer o fundo -->
+        <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+        
         <div class="header" id="header">
-            <img src="../Imagens/Logo.png" alt="Bate-papo UOL">
+            <img src="../Imagens/uol.png" alt="Bate-papo UOL">
             <ion-icon name="people-sharp" onclick="toggleSidebar()"></ion-icon>
         </div>
     
         <div class="chat-box" id="chat-box">
             <div class="messages-container"></div>
         </div>
-    
-        <aside class="sidebar hidden" id="sidebar">
-            <h1>Escolha um contato para enviar mensagem:</h1>
-            <button onclick="toggleSidebar()">Fechar</button>
-        </aside>
-    
+
         <footer>
             <input type="text" id="message-input" placeholder="Escreva aqui..."/>
-            <button id="send-btn">Enviar</button>
-        </footer>
+            <button id="send-btn" onclick="enviarMensagem()">Enviar</button>
+        </footer> 
     </div>
 
+    <aside class="sidebar" id="sidebar">
+        <h1>Escolha um contato para enviar mensagem:</h1>
+        <div id="contatos-list">
+            <!-- Botão para enviar mensagem para todos -->
+            <ion-icon name="people-sharp" id="public-message" onclick="selecionarDestinatario('Todos', 'message')"></ion-icon>
+            <!-- Botões com ícones para os contatos -->
+            <ion-icon name="person-circle-outline" id="Maria" onclick="selecionarDestinatario('Maria', 'private_message')"></ion-icon>
+            <ion-icon name="person-circle-outline" id="João" onclick="selecionarDestinatario('João', 'private_message')"></ion-icon>
+        </div>
+        
+        <h1>Escolha a visibilidade:</h1>
+        <ion-icon name="lock-open-sharp" onclick="selecionarVisibilidade('Todos', 'mensagem')"></ion-icon>
+        <ion-icon name="lock-closed-sharp" onclick="selecionarVisibilidade('private_message', 'private_message')"></ion-icon>
+        <button onclick="toggleSidebar()">Fechar</button>
+    </aside>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="../JS/bate-papo.js"></script>
-    <script src="../JS/layout.js"></script>
+    <script src="../JS/API.js" defer></script>
 </body>
 </html>
