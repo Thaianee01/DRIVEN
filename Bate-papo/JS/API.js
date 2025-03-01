@@ -256,7 +256,7 @@ function aplicarEstilo(elemento, tipoMensagem) {
 
 function adicionarConteudoMensagem(elemento, mensagem) {
     elemento.innerHTML = `
-        <span class="time">[${mensagem.time}]</span>
+        <span class="time">(${mensagem.time})</span>
         <span class="from">${mensagem.from}</span>
         <span class="to">para ${mensagem.to}:</span>
         <span class="text">${mensagem.text}</span>

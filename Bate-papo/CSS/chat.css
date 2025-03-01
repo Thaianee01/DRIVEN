@@ -44,9 +44,10 @@
     justify-content: center; /* Centraliza verticalmente */
     align-items: center; /* Centraliza horizontalmente */
     height: calc(100vh - 20vh);
+    padding: 40px 0;
     margin: 0 auto; /* Centraliza horizontalmente no contêiner pai */
     overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a altura */
-    background-color: burlywood;
+    background-color: #cccccc;
     width: 100%; /* Garante que o chat-box ocupe toda a largura disponível */
 }
 
@@ -138,35 +139,38 @@
 
 /* Rodapé */
 footer {
-    background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 10px;
-    height: 10vh;
+}
+
+.input {
+    width: 90%;  /* Placeholder ocupa 90% do footer */
+    position: relative;
+}
+
+.input input {
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    z-index: 2;
-}
-
-footer input {
-    width: 80%;
     padding: 10px;
-    border-radius: 5px;
+    font-size: 16px;
     border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-footer button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #569fde;
-    color: rgb(154, 47, 47);
+.message-hint {
+    position: absolute;
+    left: 12px;
+    bottom: -18px;  /* Coloca a mensagem hint abaixo do placeholder */
+    font-size: 14px;
+    color: gray;
+    transition: opacity 0.2s ease-in-out;
+}
+
+ion-icon {
+    width: 10%; /* Ícone ocupa 10% do footer */
+    font-size: 24px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-footer button:hover {
-    background-color: #3a7ab7;
+    color: #333;
 }
