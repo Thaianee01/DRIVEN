@@ -65,3 +65,13 @@ H1 {
     font-weight: bold;
     font-weight: 700;
 }
+
+h2 {
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}

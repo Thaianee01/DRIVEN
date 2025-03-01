@@ -2,22 +2,24 @@
     box-sizing: border-box;
 }
 
-
+/* Cabeçalho */
 .header {
-    background-color: rgb(69, 57, 148);
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 10vh;
     width: 100vw;
-    padding: 20px;
+    padding: 30px;
     position: fixed;
+    border-radius: 2px;
+    border-bottom: #0000000D;
     top: 0;
     z-index: 2;
 }
 
+
 .header img {
-    height: auto;
     width: 75px;
 }
 
@@ -26,61 +28,99 @@
     cursor: pointer;
 }
 
+/* Container principal */
 .main {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    margin-top: 10vh; 
-    margin-bottom: 10vh; 
-    background-color: #dcc3c3;
     width: 100vw;
+    height: calc(100vh - 20vh);
+    margin-top: 10vh; 
+    margin-bottom: 10vh;
 }
 
 .chat-box {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: calc(100vh - 20vh);
+    margin: 0 auto; /* Centraliza horizontalmente no contêiner pai */
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a altura */
+    background-color: burlywood;
+    width: 100%; /* Garante que o chat-box ocupe toda a largura disponível */
 }
-
 
 .messages-container {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 10px;
+    width: 100%;
+    height: 100%;
+    gap: 2px;
 }
 
-.message {
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #569fde;
-    z-index: 1;
-}
-
-.status-message {
-    background-color: #d3d3d3;
-    text-align: center;
-    font-style: italic;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.private-message {
-    background-color: #ff4d4d;
-    color: white;
-    font-weight: bold;
-}
-
+/* Estilo para mensagens normais (branco) */
 .normal-message {
-    background-color: #e5e5e5;
-    border: 1px solid #ddd;
+    background-color: white;
+    color: black; /* Cor do texto para melhor legibilidade */
     padding: 10px;
-    border-radius: 8px;
 }
 
+/* Estilo para mensagens privadas (vermelho) */
+.private-message {
+    background-color: red;
+    color: white; /* Cor do texto para melhor legibilidade */
+    padding: 10px;
+
+}
+
+/* Estilo para mensagens de status (cinza) */
+.status-message {
+    background-color: gray;
+    color: white; /* Cor do texto para melhor legibilidade */
+    padding: 10px;
+}
+
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -50%;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    padding: 20px;
+    z-index: 20;
+    gap: 20px;
+    transition: right 0.4s ease;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+/* Seleção de contatos e visibilidade */
+.contato-item, .visibilidade-item {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+/* Exibe o ícone de checkmark quando o item for selecionado */
+.checkmark {
+    display: none;
+}
+
+.checkmark.selecionado {
+    display: inline-block;
+    color: green;
+    font-size: 20px;
+}
+
+/* Camada de fundo */
 .overlay {
     display: none;
     position: fixed;
@@ -88,50 +128,30 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semitransparente */
-    z-index: 15; /* Maior que a sidebar */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
 }
 
 .overlay.active {
-    display: block; /* Exibir quando ativo */
+    display: block;
 }
 
-.sidebar {
-    display: flex; 
-    position: fixed;
-    top: 0;
-    right: -50%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%; 
-    height: 100vh;
-    background-color: #abe3d2;
-    padding: 20px;
-    z-index: 10;
-    transition: right 0.3s ease;
-}
-
-.sidebar.active {
-    right: 0;
-}
-
-
+/* Rodapé */
 footer {
-    background-color: rgb(139, 128, 214);
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-evenly;
+    padding: 10px;
     height: 10vh;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     bottom: 0;
     z-index: 2;
 }
 
 footer input {
-    flex: 1;
+    width: 80%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -142,7 +162,7 @@ footer button {
     border: none;
     border-radius: 5px;
     background-color: #569fde;
-    color: white;
+    color: rgb(154, 47, 47);
     cursor: pointer;
     transition: 0.3s;
 }

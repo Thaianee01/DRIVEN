@@ -20,7 +20,6 @@
     </div>
 
     <div class="main" id="chat" style="display: none;">
-        <!-- Overlay para escurecer o fundo -->
         <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
         
         <div class="header" id="header">
@@ -29,29 +28,42 @@
         </div>
     
         <div class="chat-box" id="chat-box">
-            <div class="messages-container"></div>
+            <div class="messages-container" id="messages-container"></div>
         </div>
 
         <footer>
-            <input type="text" id="message-input" placeholder="Escreva aqui..."/>
-            <button id="send-btn" onclick="enviarMensagem()">Enviar</button>
+            <div class="input">
+                <input type="text" id="message-input" placeholder="Escreva aqui..."/>
+                <span id="personalized-message" class="message-hint"></span>
+            </div>
+            <ion-icon name="paper-plane-outline"id="send-btn" onclick="enviarMensagem()"></ion-icon>
         </footer> 
     </div>
 
     <aside class="sidebar" id="sidebar">
-        <h1>Escolha um contato para enviar mensagem:</h1>
-        <div id="contatos-list">
-            <!-- Botão para enviar mensagem para todos -->
-            <ion-icon name="people-sharp" id="public-message" onclick="selecionarDestinatario('Todos', 'message')"></ion-icon>
-            <!-- Botões com ícones para os contatos -->
-            <ion-icon name="person-circle-outline" id="Maria" onclick="selecionarDestinatario('Maria', 'private_message')"></ion-icon>
-            <ion-icon name="person-circle-outline" id="João" onclick="selecionarDestinatario('João', 'private_message')"></ion-icon>
+        <div class="contatos">
+            <h2>Escolha um contato para enviar mensagem:</h2>
+            <ul class="contatos-list"></ul>
         </div>
-        
-        <h1>Escolha a visibilidade:</h1>
-        <ion-icon name="lock-open-sharp" onclick="selecionarVisibilidade('Todos', 'mensagem')"></ion-icon>
-        <ion-icon name="lock-closed-sharp" onclick="selecionarVisibilidade('private_message', 'private_message')"></ion-icon>
-        <button onclick="toggleSidebar()">Fechar</button>
+
+        <div class="visibilidade">
+            <h2>Escolha a visibilidade:</h2>
+            <div class="visibilidade-item" onclick="selecionarVisibilidade(this, 'Todos')">
+                <div class="icon-text-group">
+                    <ion-icon name="lock-open-sharp"></ion-icon>
+                    <span>Público</span>
+                </div>
+                <ion-icon name="checkmark" class="checkmark"></ion-icon>
+            </div>
+
+            <div class="visibilidade-item" onclick="selecionarVisibilidade(this, 'Privado')">
+                <div class="icon-text-group">
+                    <ion-icon name="lock-closed-sharp" class="closed"></ion-icon>
+                    <span>Privado</span>
+                </div>
+                <ion-icon name="checkmark" class="checkmark"></ion-icon>
+            </div>
+        </div>
     </aside>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
