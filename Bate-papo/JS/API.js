@@ -74,7 +74,7 @@ function atualizarListaContatos(participantes) {
     `;
     todosItem.onclick = () => selecionarDestinatario(todosItem, 'Todos');
     contatosList.appendChild(todosItem);
-
+    
     // Adiciona os demais participantes
     participantes.forEach(participante => {
         if (participante.name !== nomeUsuario) { // Não adiciona o próprio usuário
@@ -102,18 +102,17 @@ function toggleSidebar() {
 }
 
 // Função para selecionar automaticamente "Todos" e "Público" após o login
-function selecionarPadroes() {
-    const itemTodos = document.querySelector('#contatos-list .contato-item');
-    const itemPublico = document.querySelector('.visibilidade-item');
+window.onload = function selecionarPadroes() {
+    // Seleciona o item "Todos" automaticamente ao carregar a página
+    const todos = document.querySelector('.contato-item'); 
+    todos.classList.add('selecionado');
+    todos.querySelector('.checkmark').classList.add('selecionado');
 
-    if (itemTodos) {
-        selecionarDestinatario(itemTodos, 'Todos');
-    }
+    const publico = document.querySelector('.visibilidade-item');
+    publico.classList.add('selecionado');
+    publico.querySelector('.checkmark').classList.add('selecionado');
+};
 
-    if (itemPublico) {
-        selecionarVisibilidade(itemPublico);
-    }
-}
 
 // Função de seleção de destinatário
 function selecionarDestinatario(elemento, nome) {
