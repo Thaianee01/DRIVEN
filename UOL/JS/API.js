@@ -1,4 +1,4 @@
-const UUID = '058a144e-4f75-4f88-b504-a3063a8264a5'; // UUID da sala do chat
+const UUID = '5d2bf5e9-faef-4b0f-ba07-f48796082726'; // UUID da sala do chat
 
 // URLs da API
 const URL_ENTRAR = `https://mock-api.driven.com.br/api/v6/uol/participants/${UUID}`;
@@ -30,7 +30,7 @@ function entrarNaSala(usuario) {
         .then(() => {
             console.log(`Usuário ${usuario.name} entrou na sala.`);
             manterConexao();
-            buscarMensagens(); 
+            buscarMensagens();
             buscarParticipantes(); // Busca os participantes imediatamente após o login
             setInterval(manterConexao, 5000); // Mantém a conexão ativa
             setInterval(buscarMensagens, 3000); // Atualiza as mensagens a cada 3 segundos
@@ -38,13 +38,10 @@ function entrarNaSala(usuario) {
 
             iniciarChat();
         })
-        .catch(error => { 
+        .catch(error => {
             if (error.response && error.response.status === 400) {
                 alert('Nome já em uso. Tente outro nome.');
-            } else {
-                console.error('Erro ao entrar na sala:', error);
-                alert('Erro ao entrar na sala. Tente novamente.');
-            }
+            } 
         });
 }
 
@@ -62,7 +59,7 @@ function atualizarListaContatos(participantes) {
     const contatosList = document.querySelector('.contatos-list');
     contatosList.innerHTML = ""; // Limpa a lista atual
 
-    // Adiciona o item "Todos" como primeiro contato
+    // Adiciona o item "Todos"
     const todosItem = document.createElement('li');
     todosItem.classList.add('contato-item');
     todosItem.innerHTML = `
@@ -74,10 +71,16 @@ function atualizarListaContatos(participantes) {
     `;
     todosItem.onclick = () => selecionarDestinatario(todosItem, 'Todos');
     contatosList.appendChild(todosItem);
-    
+
+    // Aplica seleção no "Todos" se for o caso
+    if (destinatario === "Todos") {
+        todosItem.classList.add('selecionado');
+        todosItem.querySelector('.checkmark').classList.add('selecionado');
+    }
+
     // Adiciona os demais participantes
     participantes.forEach(participante => {
-        if (participante.name !== nomeUsuario) { // Não adiciona o próprio usuário
+        if (participante.name !== nomeUsuario) { // Ignora o próprio usuário
             const contatoItem = document.createElement('li');
             contatoItem.classList.add('contato-item');
             contatoItem.innerHTML = `
@@ -89,22 +92,28 @@ function atualizarListaContatos(participantes) {
             `;
             contatoItem.onclick = () => selecionarDestinatario(contatoItem, participante.name);
             contatosList.appendChild(contatoItem);
+
+            // Aplica seleção se for o destinatário atual
+            if (participante.name === destinatario) {
+                contatoItem.classList.add('selecionado');
+                contatoItem.querySelector('.checkmark').classList.add('selecionado');
+            }
         }
     });
 }
 //--------------------------------------------------------------------------------------------------Barra Lateral
 function toggleSidebar() {
     const asideElement = document.getElementById("sidebar");
-    const overlayElement = document.getElementById("overlay"); 
+    const overlayElement = document.getElementById("overlay");
 
-    asideElement.classList.toggle("active"); 
+    asideElement.classList.toggle("active");
     overlayElement.classList.toggle("active");
 }
 
 // Função para selecionar automaticamente "Todos" e "Público" após o login
 window.onload = function selecionarPadroes() {
     // Seleciona o item "Todos" automaticamente ao carregar a página
-    const todos = document.querySelector('.contato-item'); 
+    const todos = document.querySelector('.contato-item');
     todos.classList.add('selecionado');
     todos.querySelector('.checkmark').classList.add('selecionado');
 
@@ -112,7 +121,6 @@ window.onload = function selecionarPadroes() {
     publico.classList.add('selecionado');
     publico.querySelector('.checkmark').classList.add('selecionado');
 };
-
 
 // Função de seleção de destinatário
 function selecionarDestinatario(elemento, nome) {
@@ -185,7 +193,7 @@ function buscarMensagens() {
 
 //---------------------------------------------------------------------------------------------------- Exibir Mensagens
 function exibirMensagem(mensagens) {
-    const messagesContainer = document.querySelector(".messages-container"); 
+    const messagesContainer = document.querySelector(".messages-container");
     messagesContainer.innerHTML = "";
     mensagens.forEach(mensagem => {
         if (filtro(mensagem)) {
@@ -216,14 +224,14 @@ function enviarMensagem() {
             'Content-Type': 'application/json' // Adiciona o cabeçalho necessário
         }
     })
-    .then(() => {
-        messageInput.value = ''; // Limpa o input
-        buscarMensagens(); // Atualiza as mensagens
-    })
-    .catch(error => {
-        console.error('Erro ao enviar mensagem:', error);
-        alert('Erro ao enviar mensagem. Verifique os dados e tente novamente.');
-    });
+        .then(() => {
+            messageInput.value = ''; // Limpa o input
+            buscarMensagens(); // Atualiza as mensagens
+        })
+        .catch(error => {
+            console.error('Erro ao enviar mensagem:', error);
+            alert('Erro ao enviar mensagem. Verifique os dados e tente novamente.');
+        });
 }
 
 function filtro(mensagem) {
@@ -256,12 +264,14 @@ function aplicarEstilo(elemento, tipoMensagem) {
 
 function adicionarConteudoMensagem(elemento, mensagem) {
     elemento.innerHTML = `
-        <span class="time">(${mensagem.time})</span>
-        <span class="from">${mensagem.from}</span>
-        <span class="to">para ${mensagem.to}:</span>
+        <span class="time">[${mensagem.time}]</span>
+        <span class="from"><span class="nome-usuario">${mensagem.from}</span></span>
+        <span class="to">para <span class="nome-usuario">${mensagem.to}</span>:</span>
         <span class="text">${mensagem.text}</span>
     `;
 }
+
+// Função scroll
 
 function scroll() {
     const Container = document.querySelector(".chat-box");

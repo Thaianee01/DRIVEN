@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+.nome-usuario {
+    font-weight: bold;
+}
+
 /* Cabeçalho */
 .header {
     background-color: #FFFFFF;
@@ -13,7 +17,6 @@
     padding: 30px;
     position: fixed;
     border-radius: 2px;
-    border-bottom: #0000000D;
     top: 0;
     z-index: 2;
 }
@@ -34,21 +37,20 @@
     flex-direction: column;
     width: 100vw;
     height: calc(100vh - 20vh);
-    margin-top: 10vh; 
+    margin-top: 10vh;
     margin-bottom: 10vh;
 }
 
 .chat-box {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza horizontalmente (X) */
+    align-items: center; /* Centraliza verticalmente (Y) */
     height: calc(100vh - 20vh);
-    padding: 40px 0;
     margin: 0 auto; /* Centraliza horizontalmente no contêiner pai */
     overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a altura */
-    background-color: #cccccc;
-    width: 100%; /* Garante que o chat-box ocupe toda a largura disponível */
+    background-color: #f3f3f3;
+    width: 100%;
 }
 
 .messages-container {
@@ -62,22 +64,21 @@
 /* Estilo para mensagens normais (branco) */
 .normal-message {
     background-color: white;
-    color: black; /* Cor do texto para melhor legibilidade */
+    color: black;
     padding: 10px;
 }
 
 /* Estilo para mensagens privadas (vermelho) */
 .private-message {
-    background-color: red;
-    color: white; /* Cor do texto para melhor legibilidade */
+    background-color: #ffdede;
+    color: #000000;
     padding: 10px;
-
 }
 
 /* Estilo para mensagens de status (cinza) */
 .status-message {
-    background-color: gray;
-    color: white; /* Cor do texto para melhor legibilidade */
+    background-color: #dcdcdc;
+    color: rgb(0, 0, 0);
     padding: 10px;
 }
 
@@ -85,15 +86,12 @@
 .sidebar {
     position: fixed;
     top: 0;
-    right: -50%;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
+    right: -70%;
+    width: 70%;
     height: 100vh;
     background-color: #FFFFFF;
     padding: 20px;
     z-index: 20;
-    gap: 20px;
     transition: right 0.4s ease;
 }
 
@@ -102,7 +100,8 @@
 }
 
 /* Seleção de contatos e visibilidade */
-.contato-item, .visibilidade-item {
+.contato-item,
+.visibilidade-item {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
@@ -117,7 +116,7 @@
 
 .checkmark.selecionado {
     display: inline-block;
-    color: green;
+    color: #28bb25;
     font-size: 20px;
 }
 
@@ -139,38 +138,32 @@
 
 /* Rodapé */
 footer {
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+}
+
+footer input {
+    width: 100%;
     padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.footer ion-icon {
+    font-size: 50px;
+    cursor: pointer;
 }
 
 .input {
-    width: 90%;  /* Placeholder ocupa 90% do footer */
-    position: relative;
-}
-
-.input input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.message-hint {
-    position: absolute;
-    left: 12px;
-    bottom: -18px;  /* Coloca a mensagem hint abaixo do placeholder */
-    font-size: 14px;
-    color: gray;
-    transition: opacity 0.2s ease-in-out;
-}
-
-ion-icon {
-    width: 10%; /* Ícone ocupa 10% do footer */
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 10px;
 }
