@@ -55,23 +55,27 @@ export default function Posts() {
         setPosts(novosPosts);
     };
 
-    // Função para curtir ao clicar na imagem do post
-    const curtirPelaImagem = (index) => {
+    // Função para curtir/descurtir ao clicar na imagem do post
+    const imageClick = (index) => {
         const novosPosts = [...posts];
         const post = novosPosts[index];
 
-        // Só curte se o post não estiver curtido
-        if (!post.curtido) {
-            post.curtido = true;
-            post.curtidas.quantidade += 1; // Adiciona um like
-            setPosts(novosPosts);
+        // Alterna o estado de curtida
+        post.curtido = !post.curtido;
+
+        // Atualiza o número de likes
+        if (post.curtido) {
+            post.curtidas.likes += 1; // Adiciona um like
+        } else {
+            post.curtidas.likes -= 1; // Remove um like
         }
+
+        setPosts(novosPosts);
     };
 
     const formatarLikes = (likes) => {
         return likes.toLocaleString("pt-BR"); // Formata o número com pontos de milhar
     };
-
 
     return (
         <div className="posts">
@@ -84,27 +88,27 @@ export default function Posts() {
                         </div>
                     </div>
 
-                    <div className="conteudo" onClick={() => curtirPelaImagem(index)}>
+                    <div className="conteudo" onClick={() => imageClick(index)}>
                         <img src={post.conteudo} alt={`Post de ${post.usuario}`} />
                     </div>
 
                     <div className="fundo">
                         <div className="acoes">
-                        <div>
-                            <ion-icon
-                                name={post.curtido ? "heart" : "heart-outline"}
-                                onClick={() => toggleCurtido(index)}
-                                style={{ color: post.curtido ? "red" : "black" }}
-                            ></ion-icon>
-                            <ion-icon name="chatbubble-outline"></ion-icon>
-                            <ion-icon name="paper-plane-outline"></ion-icon>
+                            <div>
+                                <ion-icon
+                                    name={post.curtido ? "heart" : "heart-outline"}
+                                    onClick={() => toggleCurtido(index)}
+                                    style={{ color: post.curtido ? "red" : "black" }}
+                                ></ion-icon>
+                                <ion-icon name="chatbubble-outline"></ion-icon>
+                                <ion-icon name="paper-plane-outline"></ion-icon>
+                            </div>
+                            <div onClick={() => toggleSalvo(index)}>
+                                <ion-icon
+                                    name={post.salvo ? "bookmark" : "bookmark-outline"}
+                                ></ion-icon>
+                            </div>
                         </div>
-                        <div onClick={() => toggleSalvo(index)}>
-                            <ion-icon
-                                name={post.salvo ? "bookmark" : "bookmark-outline"}
-                            ></ion-icon>
-                        </div>
-                    </div>
 
                         <div className="curtidas">
                             <img src={post.curtidas.imagemPerfil} alt={post.curtidas.perfil} />
