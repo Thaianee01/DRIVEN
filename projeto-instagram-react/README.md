@@ -41,4 +41,3 @@ Este projeto foi desenvolvido para praticar conceitos como:
 - **Renderização condicional**.
 - **Manipulação de eventos em React**.
 - **Componentização e reutilização de código**.
-```
