@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Post from "./Post";
 
 export default function Posts() {
     const [posts, setPosts] = useState([
@@ -17,7 +18,7 @@ export default function Posts() {
             conteudo: "assets/dog.svg",
             salvo: false, // Começa como "não salvo"
             curtido: false, // Começa como "post não curtido"
-            curtidas: { perfil: "adorable_animals", imagemPerfil: "assets/adorable_animals.svg", likes: 99159 },
+            curtidas: {perfil: "adorable_animals", imagemPerfil: "assets/adorable_animals.svg", likes: 99159 },
         },
 
         {
@@ -73,52 +74,17 @@ export default function Posts() {
         setPosts(novosPosts);
     };
 
-    const formatarLikes = (likes) => {
-        return likes.toLocaleString("pt-BR"); // Formata o número com pontos de milhar
-    };
-
+    // Retorno JSX (Dentro da função Posts!)
     return (
         <div className="posts">
             {posts.map((post, index) => (
-                <div key={index} className="post">
-                    <div className="topo">
-                        <div className="usuario">
-                            <img src={post.imagem} alt={post.usuario} />
-                            {post.usuario}
-                        </div>
-                    </div>
-
-                    <div className="conteudo" onClick={() => imageClick(index)}>
-                        <img src={post.conteudo} alt={`Post de ${post.usuario}`} />
-                    </div>
-
-                    <div className="fundo">
-                        <div className="acoes">
-                            <div>
-                                <ion-icon
-                                    name={post.curtido ? "heart" : "heart-outline"}
-                                    onClick={() => toggleCurtido(index)}
-                                    style={{ color: post.curtido ? "red" : "black" }}
-                                ></ion-icon>
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                                <ion-icon name="paper-plane-outline"></ion-icon>
-                            </div>
-                            <div onClick={() => toggleSalvo(index)}>
-                                <ion-icon
-                                    name={post.salvo ? "bookmark" : "bookmark-outline"}
-                                ></ion-icon>
-                            </div>
-                        </div>
-
-                        <div className="curtidas">
-                            <img src={post.curtidas.imagemPerfil} alt={post.curtidas.perfil} />
-                            <div className="texto">
-                                Curtido por <strong>{post.curtidas.perfil}</strong> e{" "}
-                                <strong>outras {formatarLikes(post.curtidas.likes)} pessoas</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Post
+                    key={index}
+                    post={post}
+                    onToggleSalvo={() => toggleSalvo(index)}
+                    onToggleCurtido={() => toggleCurtido(index)}
+                    onImageClick={() => imageClick(index)}
+                />
             ))}
         </div>
     );

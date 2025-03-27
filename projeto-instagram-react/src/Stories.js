@@ -1,3 +1,5 @@
+import Story from './Story';
+
 export default function Stories() {
     const stories = [
         { usuario: "meowed", imagem: "assets/meowed.svg" },
@@ -13,13 +15,8 @@ export default function Stories() {
     return (
         <div className="stories">
             {stories.map((story, index) => (
-                <div key={index} className="story">
-                    <div className="imagem">
-                        <img src={story.imagem} alt={story.usuario} />
-                    </div>
-                    <div className="usuario">{story.usuario}</div>
-                </div>
+                <Story key={index} usuario={story.usuario} imagem={story.imagem} />
             ))}
         </div>
-    );
+    )
 }
