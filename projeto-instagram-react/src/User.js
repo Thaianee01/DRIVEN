@@ -4,7 +4,7 @@ export default function User() {
   const [name, setName] = useState("catanacomics");
   const [perfil, setPerfil] = useState("assets/catanacomics.svg");
 
-  // Função para alterar o nome ao clicar no ícone de lápis
+  // Função para alterar o nome
   const ChangeName = () => {
     const newName = prompt("Digite o nome de usuário:");
     if (newName !== "") { 

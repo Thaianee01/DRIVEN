@@ -1,4 +1,3 @@
-// Post.js
 import React from "react";
 
 export default function Post({ post, onToggleSalvo, onToggleCurtido, onImageClick }) {
@@ -41,8 +40,8 @@ export default function Post({ post, onToggleSalvo, onToggleCurtido, onImageClic
                 <div className="curtidas">
                     <img src={post.curtidas.imagemPerfil} alt={post.curtidas.perfil} />
                     <div className="texto">
-                        Curtido por <strong>{post.curtidas.perfil}</strong> e{" "}
-                        <strong>outras {formatarLikes(post.curtidas.likes)} pessoas</strong>
+                        Curtido por <strong>{post.curtidas.perfil}</strong> e
+                        <strong> outras {formatarLikes(post.curtidas.likes)} pessoas</strong>
                     </div>
                 </div>
             </div>
