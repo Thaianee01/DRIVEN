@@ -1,14 +1,12 @@
-# DRIVEN - Full Stack Course
+# React + Vite
 
-This is my repository for the projects developed during the Driven Web Development.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Projects
+Currently, two official plugins are available:
 
-### 1. Create a News Website Homepage  
-Recreation of a simplified layout for the homepage of Globo.com, using HTML and CSS.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 2. Develop a Responsive Website Similar to Instagram  
-Development of a responsive website, focusing on adaptability with HTML and CSS.
+## Expanding the ESLint configuration
 
-### 3. Develop a Food Ordering Application (Mobile Only)  
-Creation of a mobile-first prototype for a food ordering app, with interactive features using JavaScript.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
